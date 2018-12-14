@@ -41,4 +41,14 @@ public class CustomerController {
         customerService.save(customer);
         return new ResponseEntity(HttpStatus.CREATED);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity delete(@PathVariable("id") Long id) {
+        try {
+            customerService.delete(id);
+            return new ResponseEntity(HttpStatus.OK);
+        } catch (IllegalAccessException e) {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
+        }
+    }
 }

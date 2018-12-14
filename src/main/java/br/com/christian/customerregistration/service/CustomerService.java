@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -18,6 +19,16 @@ public class CustomerService {
     }
 
     public void save(Customer customer) {
+        customer.calculateInterestRate();
         customerRepository.save(customer);
+    }
+
+    public void delete(Long id) throws IllegalAccessException {
+        Optional<Customer> optional = customerRepository.findById(id);
+        if (optional.isPresent()) {
+            customerRepository.delete(optional.get());
+        } else {
+            throw new IllegalAccessException();
+        }
     }
 }

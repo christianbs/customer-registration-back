@@ -19,4 +19,17 @@ public class Customer {
     private Risk risk;
     private Integer interestRate;
 
+    public void calculateInterestRate() {
+        switch (risk) {
+            case A:
+                interestRate = 0;
+                break;
+            case B:
+                interestRate = 10;
+                break;
+            case C:
+                interestRate = 20;
+                break;
+        }
+    }
 }
