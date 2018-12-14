@@ -23,12 +23,12 @@ public class CustomerService {
         customerRepository.save(customer);
     }
 
-    public void delete(Long id) throws IllegalAccessException {
+    public void delete(Long id) throws IllegalArgumentException {
         Optional<Customer> optional = customerRepository.findById(id);
         if (optional.isPresent()) {
             customerRepository.delete(optional.get());
         } else {
-            throw new IllegalAccessException();
+            throw new IllegalArgumentException();
         }
     }
 }

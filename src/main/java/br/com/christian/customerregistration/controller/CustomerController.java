@@ -47,7 +47,7 @@ public class CustomerController {
         try {
             customerService.delete(id);
             return new ResponseEntity(HttpStatus.OK);
-        } catch (IllegalAccessException e) {
+        } catch (IllegalArgumentException e) {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
